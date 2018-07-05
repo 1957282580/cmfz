@@ -9,6 +9,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+
+
+        /*
+        User: zhangbohao
+        Date: 2018/7/4
+        */
+
 @Controller
 @RequestMapping("/vCode")
 public class GetValidateCodeController{

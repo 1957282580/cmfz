@@ -34,6 +34,6 @@ public class ManagerController {
                 return "index";
             }
         }
-        return "login";
+        return "redirect:/login.jsp";
     }
 }
