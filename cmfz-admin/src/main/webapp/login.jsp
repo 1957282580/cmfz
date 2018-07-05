@@ -17,12 +17,10 @@
 		$(function(){
 			//点击更换验证码：
 			$("#captchaImage").click(function(){//点击更换验证码
-
-               var code=document.getElementById("captchaImage");
-                code.src="http://localhost:8088/vCode/getVcode";
-
+				alert("asd");
+               var captchaImage=document.getElementById("captchaImage");
+                captchaImage.src="http://localhost:8088/vCode/getVcode?time="+new Date().getMilliseconds();
 			});
-			
 			//  form 表单提交
 			/*$("#loginForm").bind("submit",function(){
 				alert("自己做");

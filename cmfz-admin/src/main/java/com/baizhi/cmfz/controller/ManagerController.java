@@ -26,12 +26,11 @@ public class ManagerController {
         session.setAttribute("manager",manager);
 
         String code = (String) session.getAttribute("code");
-        System.out.println(manager);
-        System.out.println(mgr_name+"==="+mgr_pwd+"-----"+vCode);
+
 
         if(vCode != null && vCode.equals(code)){
             if (manager != null){
-                return "index";
+                return "redirect:/main/main.jsp";
             }
         }
         return "redirect:/login.jsp";
