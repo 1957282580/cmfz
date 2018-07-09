@@ -8,4 +8,7 @@ public interface ManagerDao {
 
     public Manager selectmanager(@Param("mgr_name")String mgr_name);
 
+   /* public int update*/
+
+
 }

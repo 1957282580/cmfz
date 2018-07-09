@@ -1,6 +1,5 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-<%@page isELIgnored="false" %>
+<%@ page language="java" isELIgnored="false" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <head>
 	<title>持名法州后台管理中心</title>
 			
@@ -17,7 +16,7 @@
 		$(function(){
 			//点击更换验证码：
 			$("#captchaImage").click(function(){//点击更换验证码
-				alert("asd");
+
                var captchaImage=document.getElementById("captchaImage");
                 captchaImage.src="http://localhost:8088/vCode/getVcode?time="+new Date().getMilliseconds();
 			});
@@ -33,7 +32,6 @@
 	</script>
 </head>
 <body>
-	
 		<div class="login">
 			<form id="loginForm" action='${pageContext.request.contextPath}/Manager/login' method="post" >
 				
@@ -47,7 +45,7 @@
 								用户名:
 							</th>
 							<td>
-								<input type="text"  name="mgr_name" class="text" value="xxx" maxlength="20"/>
+								<input type="text"  name="mgr_name" class="text" value="${cookie.username.value}" maxlength="20"/>
 							</td>
 					  </tr>
 					  <tr>
@@ -55,10 +53,9 @@
 								密&nbsp;&nbsp;&nbsp;码:
 							</th>
 							<td>
-								<input type="password" name="mgr_pwd" class="text" value="xxx" maxlength="20" autocomplete="off"/>
+								<input type="password" name="mgr_pwd" class="text" value="${cookie.Manager.password.value}" maxlength="20" autocomplete="off"/>
 							</td>
 					  </tr>
-
 						<tr>
 							<td>&nbsp;</td>
 							<th>验证码:</th>
@@ -77,7 +74,7 @@
 						</th>
 						<td>
 							<label>
-								<input type="checkbox" id="isRememberUsername" value="true"/> 记住用户名
+								<input type="checkbox" id="isRememberUsername" value="true"  name="cbx" checked="checked"/> 记住密码
 							</label>
 						</td>
 					</tr>

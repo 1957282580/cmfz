@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "../mybatis-3-mapper.dtd" >
+<mapper namespace="com.baizhi.cmfz.dao.PictureDao">
+
+
+
+    <select id="selectAll" resultType="Picture">
+        select * from t_picture LIMIT #{begin} , #{pagesize}
+    </select>
+
+    <select id="count" resultType="int">
+        select count(*) from t_picture
+    </select>
+
+    <insert id="add">
+
+        insert INTO t_picture(picture_id,picture_path,picture_descripti,picture_status) VALUES(#{picture_id},#{picture_path},#{picture_descripti},#{picture_status})
+
+    </insert>
+    <update id="update" >
+
+        update t_picture set picture_descripti=#{picture_descripti},picture_path=#{picture_path},picture_status=#{picture_status}
+        WHERE picture_id = #{picture_id}
+
+    </update>
+
+
+
+
+
+</mapper>

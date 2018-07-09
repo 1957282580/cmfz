@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
-<%@page isELIgnored="false" %>
+	pageEncoding="utf-8" isELIgnored="false" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,6 +11,7 @@
 <script type="text/javascript" src="../js/jquery.min.js"></script>   
 <script type="text/javascript" src="../js/jquery.easyui.min.js"></script>  
 <script type="text/javascript" src="../js/easyui-lang-zh_CN.js"></script>
+	<script type="text/javascript" src="../js/datagrid-detailview.js"></script>
 <script type="text/javascript">
 
 
@@ -25,7 +26,9 @@
             $("#tt").tabs("add",{
                 title:menu_name,
                 iconCls:menu_icon,
+				href:"${pageContext.request.contextPath}/"+menu_url,
                 closable:true,
+
 
             });
         }
@@ -57,9 +60,28 @@
             }
         });
 
+        $("#btn1").linkbutton({
+
+            onClick:function(){
+                //展示一个对话窗口
+                $("#dialog").dialog({
+                    width:400,
+                    height:249,
+                    title:"修改管理员账户",
+                    toolbar:[{
+                        iconCls:"icon-help",
+                        text:"帮助",
+                        handler:function(){
+                            alert("帮助");
+                        }
+                    }],
+                   href:"${pageContext.request.contextPath}/main/edit.jsp"
+                });
+            }
+        });
+
+
     });
-
-
 
 
 
@@ -79,7 +101,9 @@
 		持名法州后台管理系统
 	</div>
 	<div style="font-size: 16px;color: #FAF7F7;font-family: 楷体;width: 300px;float:right;padding-top:15px">欢迎您:${sessionScope.manager.mgr_name}
-		&nbsp;<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-edit'">修改密码</a>&nbsp;&nbsp;<a href="#"></a>
+		&nbsp;<a  id="btn1" class="easyui-linkbutton" data-options="iconCls:'icon-edit'">修改密码</a><a href="#"></a>
+
+		&nbsp;<a id="btn2" class="easyui-linkbutton" data-options="iconCls:'icon-01'">退出系统</a>
 	</div>
 </div>
 <div data-options="region:'south',split:true" style="height: 40px;background: #5C160C">
@@ -98,5 +122,6 @@
 			 style="background-image:url(image/shouye.jpg);background-repeat: no-repeat;background-size:100% 100%;"></div>
 	</div>
 </div>
+<div id="dialog"></div>
 </body>
 </html>

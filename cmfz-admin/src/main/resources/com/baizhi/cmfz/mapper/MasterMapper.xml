@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "../mybatis-3-mapper.dtd" >
+<mapper namespace="com.baizhi.cmfz.dao.MasterDao">
+
+
+
+   <select id="selectAll" resultType="Master">
+
+       select * from t_master LIMIT #{begin} , #{pagesize}
+
+   </select>
+
+    <select id="count" resultType="int">
+        select count(*) from t_master
+    </select>
+
+    <insert id="add">
+
+        insert into t_master values(#{master_id},#{master_name},#{master_photo},#{introduce})
+
+    </insert>
+
+    <update id="update">
+        UPDATE t_master set master_name=#{master_name},introduce=#{introduce} WHERE master_id=#{master_id}
+    </update>
+
+
+    <select id="findLikeone" resultType="Master">
+        select *
+        from  t_master
+        where  master_name LIKE '%${master_name}%'
+        LIMIT #{begin} , #{pagesize}
+
+    </select>
+    <select id="count1" resultType="int">
+        select count(*) from t_master  where master_name like '%${master_name}%'
+    </select>
+
+
+
+    <select id="findLiketwo" resultType="Master">
+
+        select *
+        from  t_master
+        where  introduce LIKE '%${introduce}%'
+        LIMIT #{begin} , #{pagesize}
+
+    </select>
+    <select id="count2" resultType="int">
+        select count(*) from t_master  where introduce like '%${introduce}%'
+
+    </select>
+
+
+    <insert id="insertBatch">
+        insert into t_master
+        values
+        <foreach collection="list" separator="," item="guru">
+            (#{guru.master_id},#{guru.master_name},#{guru.introduce},#{guru.master_phono})
+        </foreach>
+    </insert>
+
+
+
+</mapper>
